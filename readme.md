@@ -32,6 +32,8 @@
  ***************************************************************************/
 
 ```
+[![NuGet](https://img.shields.io/nuget/v/Pooling.svg?maxAge=2592000)](https://www.nuget.org/packages/Pooling/)
+ [![license](https://img.shields.io/github/license/unterrainerinformatik/pooling.svg?maxAge=2592000)](http://unlicense.org)
 
 # General  
 
@@ -58,14 +60,29 @@ This pool isn't created using a fixed size, but is allowed to grow as big as you
 #### Example  
     
 ```csharp
-LockFreeQueue<int> queue = new LockFreeQueue<int>();
-
-for (int i = 0; i < numberCount - enqueueLater; i++)
-{
-	queue.Enqueue(i + 1);
-}
+Pool<Sprite> PoolInstance = new Pool<Sprite>(new object[] {spriteBatch, game, tokens.AttackSpriteToken});
 ```
 
+Then, later on, retrieve a new or reused item from the pool:
+```csharp
+Sprite s = PoolInstance.Get();
+
+...
+s.Update(gameTime);
+...
+```
+This either gives you a reused sprite, or, when needed, automatically creates a new Sprite from scratch.
+
+When you're done with it, return it to the pool:
+```csharp
+PoolInstance.Return(s);
+```
+
+After you're done, clean up the pool:
+```csharp
+PoolInstance.Dispose();
+```
+That takes care of your registered events and objects in the pool.
 
 [homepage]: http://www.unterrainer.info
 [coding]: http://www.unterrainer.info/Home/Coding

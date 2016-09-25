@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Unterrainer Informatik OG Team</authors>
+    <owners>Public Domain</owners>
+    <licenseUrl>http://unlicense.org</licenseUrl>
+    <projectUrl>https://github.com/UnterrainerInformatik/pooling</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>This class implements a lock-free object pool.</description>
+    <summary>
+      Such things are very handy when developing games because you wouldn't want to run the garbage collector at all in order to reduce lags. But there are times when you have to use a class instead of a struct and that's the point where you want to hold on to your objects and re-use them.
+
+	  This pool does exactly that and it offers you some convenience features like events to hook into or automatic object-creation (using variable constructor signatures) as well....
+    </summary>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <language>en-US</language>
+    <tags>game development object pool pooling</tags>
+  </metadata>
+</package>
