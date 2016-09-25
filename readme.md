@@ -43,13 +43,18 @@ In order to get help with basic GIT commands you may try [the GIT cheat-sheet][c
 This repository located on our  [homepage][homepage] is private since this is the master- and release-branch. You may clone it, but it will be read-only.  
 If you want to contribute to our repository (push, open pull requests), please use the copy on github located here: [the public github repository][github]  
 
-# LockFreeQueue  
+# Pooling  
 
-This class implements a lock-free FIFO-queue.  
+This class implements a lock-free object pool.  
+Such things are very handy when developing games because you wouldn't want to run the garbage collector at all in order to reduce lags. But there are times when you have to use a class instead of a struct and that's the point where you want to hold on to your objects and re-use them.  
 
-No monitors or lock-statements are used here. The pseudo-lock is established via memory-fences built by the Interlocked library. It essentially implements a spin-lock for one atomic operation.  
-This queue is tested for a one-producer - one-consumer - environment or a many-consumer - environment, if no items get enqueued while consuming. Thus it is not capable to handle a one-producer - many-consumer or many-producer - many-consumer - environment.  
+This pool does exactly that and it offers you some convenience features like events to hook into or automatic object-creation (using variable constructor signatures) as well.  
 
+Just make the class you'd like to pool implement the PoolItem interface, create a new pool and give it the right constructor fields that are needed to create your object.  
+After using the object, just return it to the pool.  
+
+This pool isn't created using a fixed size, but is allowed to grow as big as you need it to be while reusing all objects as much as it can.  
+  
 #### Example  
     
 ```csharp
@@ -64,4 +69,4 @@ for (int i = 0; i < numberCount - enqueueLater; i++)
 
 [homepage]: http://www.unterrainer.info
 [coding]: http://www.unterrainer.info/Home/Coding
-[github]: https://github.com/UnterrainerInformatik/lockfreequeue
+[github]: https://github.com/UnterrainerInformatik/pooling
