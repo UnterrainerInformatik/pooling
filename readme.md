@@ -27,6 +27,9 @@ This pool isn't created using a fixed size, but is allowed to grow as big as you
     
 ```csharp
 Pool<Sprite> PoolInstance = new Pool<Sprite>(new object[] {spriteBatch, game, tokens.AttackSpriteToken});
+// Optional: Maybe you'd like to add a event handler.
+// We'll just call a method on the sprite class upon return of the object:
+PoolInstance.Returned += (sender, e) => e.Item.Return();
 ```
 
 Then, later on, retrieve a new or reused item from the pool:
@@ -42,6 +45,7 @@ This either gives you a reused sprite, or, when needed, automatically creates a 
 When you're done with it, return it to the pool:
 ```csharp
 PoolInstance.Return(s);
+// If you've specified the event hanlder above, this will be the time when it's called.
 ```
 
 After you're done, clean up the pool:
