@@ -7,6 +7,7 @@
     <authors>Unterrainer Informatik OG Team</authors>
     <owners>Public Domain</owners>
     <licenseUrl>http://unlicense.org</licenseUrl>
+	<iconUrl>https://github.com/UnterrainerInformatik/pooling/raw/master/icon.png</iconUrl>
     <projectUrl>https://github.com/UnterrainerInformatik/pooling</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>This class implements a lock-free object pool.</description>

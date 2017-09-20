@@ -11,7 +11,7 @@ In order to get help with basic GIT commands you may try [the GIT cheat-sheet][c
 This repository located on our  [homepage][homepage] is private since this is the master- and release-branch. You may clone it, but it will be read-only.  
 If you want to contribute to our repository (push, open pull requests), please use the copy on github located here: [the public github repository][github]  
 
-# Pooling  
+# ![Icon](https://github.com/UnterrainerInformatik/pooling/raw/master/icon.png)Pooling
 
 This class implements a lock-free object pool.  
 Such things are very handy when developing games because you wouldn't want to run the garbage collector at all in order to reduce lags. But there are times when you have to use a class instead of a struct and that's the point where you want to hold on to your objects and re-use them.  
@@ -22,9 +22,9 @@ Just make the class you'd like to pool implement the PoolItem interface, create 
 After using the object, just return it to the pool.  
 
 This pool isn't created using a fixed size, but is allowed to grow as big as you need it to be while reusing all objects as much as it can.  
-  
+
 #### Example  
-    
+
 ```csharp
 Pool<Sprite> PoolInstance = new Pool<Sprite>(new object[] {spriteBatch, game, tokens.AttackSpriteToken});
 // Optional: Maybe you'd like to add a event handler.
