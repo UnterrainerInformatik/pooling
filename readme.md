@@ -23,6 +23,11 @@ After using the object, just return it to the pool.
 
 This pool isn't created using a fixed size, but is allowed to grow as big as you need it to be while reusing all objects as much as it can.  
 
+> **If you like this repo, please don't forget to star it.**
+> **Thank you.**
+
+
+
 #### Example  
 
 ```csharp
